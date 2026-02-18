@@ -1,0 +1,36 @@
+body.focus-mode .sidebar {
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0;
+  border: none;
+}
+
+body.focus-mode .editor-toolbar {
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+
+body.focus-mode .editor-toolbar:hover {
+  opacity: 1;
+}
+
+body.focus-mode .status-bar {
+  opacity: 0.3;
+}
+
+body.focus-mode .editor {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+body.focus-mode .preview {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+body.focus-mode .editor-area {
+  transition: all 0.3s ease;
+}
