@@ -1,0 +1,15 @@
+:root[data-theme="light"] {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --muted: #64748b;
+  --accent: #6366f1;
+}
+:root[data-theme="light"] .sidebar { background: #f1f5f9; }
+:root[data-theme="light"] .editor { background: #ffffff; color: #0f172a; }
+:root[data-theme="light"] .preview { color: #1e293b; }
+:root[data-theme="light"] .search,
+:root[data-theme="light"] .title-input { color: #0f172a; }
+:root[data-theme="light"] .note-item:hover { background: rgba(99,102,241,0.05); }
+:root[data-theme="light"] .note-item.active { background: rgba(99,102,241,0.1); }
