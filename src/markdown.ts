@@ -5,42 +5,38 @@
 export function markdownToHtml(md: string): string {
   let html = md
     // Code blocks (must be before inline code)
-    .replace(/```(\w*)
-([\s\S]*?)```/g, "<pre><code class="lang-"></code></pre>")
+    .replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code class="lang-$1">$2</code></pre>')
     // Headers
-    .replace(/^#### (.+)$/gm, "<h4></h4>")
-    .replace(/^### (.+)$/gm, "<h3></h3>")
-    .replace(/^## (.+)$/gm, "<h2></h2>")
-    .replace(/^# (.+)$/gm, "<h1></h1>")
+    .replace(/^#### (.+)$/gm, '<h4>$1</h4>')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
     // Horizontal rule
-    .replace(/^---$/gm, "<hr>")
+    .replace(/^---$/gm, '<hr>')
     // Bold and italic
-    .replace(/\*\*\*(.+?)\*\*\*/g, "<strong><em></em></strong>")
-    .replace(/\*\*(.+?)\*\*/g, "<strong></strong>")
-    .replace(/\*(.+?)\*/g, "<em></em>")
+    .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
     // Strikethrough
-    .replace(/~~(.+?)~~/g, "<del></del>")
+    .replace(/~~(.+?)~~/g, '<del>$1</del>')
     // Inline code
-    .replace(/`([^`]+)`/g, "<code></code>")
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
     // Images
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, "<img src="" alt="" style="max-width:100%">")
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%">')
     // Links
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href="" target="_blank" rel="noopener"></a>")
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
     // Task lists
-    .replace(/^- \[x\] (.+)$/gm, "<li class="task done"><input type="checkbox" checked disabled> </li>")
-    .replace(/^- \[ \] (.+)$/gm, "<li class="task"><input type="checkbox" disabled> </li>")
+    .replace(/^- \[x\] (.+)$/gm, '<li class="task done"><input type="checkbox" checked disabled> $1</li>')
+    .replace(/^- \[ \] (.+)$/gm, '<li class="task"><input type="checkbox" disabled> $1</li>')
     // Unordered lists
-    .replace(/^- (.+)$/gm, "<li></li>")
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
     // Ordered lists
-    .replace(/^\d+\. (.+)$/gm, "<li></li>")
+    .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
     // Blockquotes
-    .replace(/^> (.+)$/gm, "<blockquote></blockquote>")
+    .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
     // Line breaks
-    .replace(/
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/\n/g, '<br>');
 
-/g, "</p><p>")
-    .replace(/
-/g, "<br>");
-  
-  return "<p>" + html + "</p>";
+  return '<p>' + html + '</p>';
 }

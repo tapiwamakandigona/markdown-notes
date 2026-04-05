@@ -113,7 +113,7 @@ export default function App() {
             <div key={n.id} className={`note-item ${n.id === activeId ? 'active' : ''}`}
               onClick={() => setActiveId(n.id)}>
               <div className="note-item-header">
-                {n.pinned && <span className="pin">\u{1F4CC}</span>}
+                {n.pinned && <span className="pin">📌</span>}
                 <span className="note-title">{n.title || 'Untitled'}</span>
               </div>
               <span className="note-date">{new Date(n.updatedAt).toLocaleDateString()}</span>

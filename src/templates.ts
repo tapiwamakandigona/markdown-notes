@@ -7,7 +7,7 @@ export interface NoteTemplate {
 export const NOTE_TEMPLATES: NoteTemplate[] = [
   {
     name: "Meeting Notes",
-    icon: "\u{1F4DD}",
+    icon: "📝",
     content: `# Meeting Notes - [Date]
 
 ## Attendees
@@ -27,7 +27,7 @@ export const NOTE_TEMPLATES: NoteTemplate[] = [
   },
   {
     name: "Project Plan",
-    icon: "\u{1F4CB}",
+    icon: "📋",
     content: `# Project: [Name]
 
 ## Overview
@@ -54,7 +54,7 @@ Brief description of the project.
   },
   {
     name: "Bug Report",
-    icon: "\u{1F41B}",
+    icon: "🐛",
     content: `# Bug: [Title]
 
 ## Description
@@ -78,7 +78,7 @@ Brief description of the project.
   },
   {
     name: "Daily Journal",
-    icon: "\u{1F4D6}",
+    icon: "📖",
     content: `# [Date]
 
 ## Today I Will
@@ -99,16 +99,16 @@ Brief description of the project.
   },
   {
     name: "Code Snippet",
-    icon: "\u{1F4BB}",
+    icon: "💻",
     content: `# [Title]
 
 ## Description
 
 ## Code
 
-\\`\\`\\`typescript
+${"`"}${"`"}${"`"}typescript
 
-\\`\\`\\`
+${"`"}${"`"}${"`"}
 
 ## Usage
 
@@ -117,7 +117,7 @@ Brief description of the project.
   },
   {
     name: "Reading Notes",
-    icon: "\u{1F4DA}",
+    icon: "📚",
     content: `# Book: [Title]
 **Author:** 
 **Rating:** /5
