@@ -23,7 +23,7 @@ jobs:
       - name: Capacitor
         run: |
           npm install @capacitor/core@5 @capacitor/cli@5 @capacitor/android@5
-          echo "{"appId":"com.tapiwa.markdownnotes","appName":"Markdown Notes","webDir":"dist"}" > capacitor.config.json
+          echo '{"appId":"com.tapiwa.markdownnotes","appName":"Markdown Notes","webDir":"dist"}' > capacitor.config.json
           npx cap add android
           npx cap sync
       - name: Build

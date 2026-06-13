@@ -1,2 +1,25 @@
+# Dependencies
 node_modules/
+
+# Build output
 dist/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
+# Capacitor (generated during APK build)
+android/
+ios/
+capacitor.config.json
