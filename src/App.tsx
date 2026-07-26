@@ -26,8 +26,13 @@ function markdownToHtml(md: string): string {
 
 export default function App() {
   const [notes, setNotes] = useState<Note[]>(() => {
-    const saved = localStorage.getItem('md-notes');
-    return saved ? JSON.parse(saved) : [{
+    try {
+      const saved = localStorage.getItem('md-notes');
+      if (saved) return JSON.parse(saved);
+    } catch {
+      // Ignore corrupted localStorage data — start fresh
+    }
+    return [{
       id: '1', title: 'Welcome', content: '# Welcome to Markdown Notes\n\nStart writing **bold**, *italic*, and `code`.\n\n- Create folders\n- Pin important notes\n- Search across everything\n\n> All data stored locally.',
       folder: 'Getting Started', updatedAt: Date.now(), createdAt: Date.now(), pinned: true
     }];
@@ -82,8 +87,13 @@ export default function App() {
   };
 
   const deleteNote = (id: string) => {
-    setNotes(prev => prev.filter(n => n.id !== id));
-    if (activeId === id) setActiveId(notes.find(n => n.id !== id)?.id || '');
+    setNotes(prev => {
+      const remaining = prev.filter(n => n.id !== id);
+      if (activeId === id) {
+        setActiveId(remaining[0]?.id || '');
+      }
+      return remaining;
+    });
   };
 
   const wordCount = activeNote ? activeNote.content.split(/\s+/).filter(Boolean).length : 0;
